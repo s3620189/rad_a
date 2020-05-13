@@ -13,7 +13,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'bcrypt', '3.1.12'
 #gem 'bcrypt', '~>3.1.13' 
 # bootstrap
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '3.4.1'
 # Use postgresql as the database for Active Record
 #gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
