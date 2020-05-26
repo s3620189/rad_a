@@ -1,0 +1,30 @@
+<% if logged_in? %>
+
+  <div class="bar">
+
+  <nav>
+      <ul class="nav navbar-nav ">
+        <li><%= link_to "Recent Post",   "#" %></li>
+        <li><%= link_to "Selected Post",   "#" %></li>
+        <li><%= link_to "My Setting",  "#" %></li>
+        
+      </ul>
+    </nav>
+
+   <%= form_tag("#", :method => "get",
+    class: 'navbar-form navbar-left') do %>
+    <div class="input-group">
+      <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+      <div class="input-group-btn">
+        <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+      </div>
+    </div>
+    <% end %>
+
+     <%= link_to "New Post", "#", class: "btn btn-lg btn-primary" %>
+</div>
+
+
+
+
+<% end %>

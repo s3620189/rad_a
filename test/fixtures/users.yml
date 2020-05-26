@@ -1,0 +1,43 @@
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+archer:
+  name: Sterling Archer
+  email: duchess@example.gov
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+lana:
+  name: Lana Kane
+  email: hands@example.gov
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+malory:
+  name: Malory Archer
+  email: boss@example.gov
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+yan:
+  name: Yan Sp
+  email: yan@example.gov
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+sam:
+  name: Sam Chen
+  email: sam@example.gov
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+hillard:
+  name: Hillard Rice
+  email: hillard@example.gov
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+

@@ -1,0 +1,30 @@
+
+<% provide(:title, 'forum') %>
+
+<% content_for(:sidebar) do %>
+    <%= render :partial => "layouts/sidebar" %>
+<% end %>
+
+
+<div class="position-relative d-inline " >
+posts will be here
+</div>
+<br>
+<div class= "row d-inline" >
+All users
+ <% @users.each do |user| %>
+    
+    <div class="show users col-sm d-inline" >
+    <li>
+      <%= gravatar_for user, size: 25 %>
+    
+    
+      email: 
+      <%= link_to user.email, user %>
+     </li>
+     </div>
+   
+  <% end %>
+  </div>
+
+
