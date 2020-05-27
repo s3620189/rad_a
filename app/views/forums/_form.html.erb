@@ -1,8 +1,10 @@
 <h1>New Post</h1>
-<%= form_for(@forum) do |f| %>
-  <p>
+<%= form_for(@post, url: new_forum_path) do |f| %>
+<p>
   <%= f.label :topic %><br>
-  <%= f.text_field :topic %><br>
+   <%= f.select :topic, ['AI', 'Topic2', 'Topic3', 'Topic4' ], { :include_blank => '-- Select One --' } %>
+
+     <%#= f.text_field :topic %><br>
   <%= f.label :title %><br>
   <%= f.text_field :title %><br>
   </p>

@@ -1,0 +1,22 @@
+<% if logged_in? %>
+<div class="col-md-1 col-md-1 col-md-1 col-md-1 "position-relative" ">
+  <ul class="nav nav-siderbar nav-left">
+    <li class="sidebar_profile"><%= link_to  "My Profile", current_user %>
+    </li>
+    <li>
+      <%= link_to  "My Posts", "#" %>
+    </li>
+    <li>
+      <%= link_to  "My Comments", "#" %>
+    </li>
+    <li>
+      <%= link_to  "Comments to Me", "#" %>
+    </li>
+    <li>
+      <%= link_to  "Setting", edit_user_path(current_user) %>
+    </li>
+  </ul>
+</div>
+<% end %>
+
+    

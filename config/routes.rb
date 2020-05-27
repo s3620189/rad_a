@@ -14,10 +14,13 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+ post '/forums/new', to: 'forums#create'
+
+ get 'setting', to: 'forums#setting'
   
   resources :forums
   resources :users do
-      resources :forums
+      resources :posts
   end
   
   

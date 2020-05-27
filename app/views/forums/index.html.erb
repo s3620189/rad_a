@@ -1,16 +1,48 @@
 
 <% provide(:title, 'forum') %>
 
-<% content_for(:sidebar) do %>
-    <%= render :partial => "layouts/sidebar" %>
-<% end %>
 
+
+
+<div class="row">
+  
+    <%= render 'navbar' %>
+ </div>
 
 <div class="position-relative d-inline " >
-posts will be here
+debug All post here:
+
+<div class= "row " >
+ 
+ <% @users.each do |user| %>
+    <% user.posts.each do |post| %>
+    <div class="show users col-sm d-inline" >
+    
+      <%= gravatar_for user, size: 60 %>
+    
+     <li>
+      user email: 
+      <%= link_to user.email, user %>
+      <br>
+      
+      <%= link_to post.updated_at, "#" %>
+      <br>
+      title:
+      <%= link_to post.title, "#" %>
+      </li>
+     </div>
+     <% end %>
+    
+   
+  <% end %>
+  </div>
+
+
+
+
 </div>
 <br>
-<div class= "row d-inline" >
+<div class= "row" >
 All users
  <% @users.each do |user| %>
     
@@ -26,5 +58,32 @@ All users
    
   <% end %>
   </div>
+
+
+  <div class= "row " >
+  topic:
+ 
+    <% temps=@posts.to_set %>
+    <% temps.each do |post| %>
+    <div class="show users col-sm d-inline" >
+    
+     
+    
+     <li>
+   
+      
+      <%= link_to post.topic, "#" %>
+      </li>
+     </div>
+     <% end %>
+    
+   
+  
+  </div>
+
+
+
+
+
 
 
