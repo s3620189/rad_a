@@ -23,3 +23,11 @@
 7. `docker-compose run --rm web rails assets:precompile`
 8. `docker-compose run --rm web rails console`
 9. `docker-compose run --rm web rails test`
+
+Name Xibei Lu
+ID  s3620189
+ The highest level you attempted 80
+ heroku:
+ https://limitless-woodland-81215.herokuapp.com/
+ 
+ github:
