@@ -1,0 +1,27 @@
+<% provide(:title, ' comments to me') %>
+
+<div class="row">
+ 
+    <%= render 'sidebar' %>
+
+    <div>
+<div class = "show comments">
+ <% current_user.posts.each do |post| %>
+    
+  <% post.comments.each do |comment| %>
+
+
+    <li>
+    <%= gravatar_for comment.user %>
+    <%= link_to comment.comments, post_comment_path(comment.post,comment.post.id) %><br>
+    <br>
+    ----Commented by user:
+    <%=  comment.user.email %>
+    <br>
+    ---------------------------------------------------------------------------------
+    <br>
+    <br>
+    </li>
+    <% end %>
+    <% end %>
+    </div>

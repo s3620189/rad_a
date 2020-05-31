@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       # successful save
       log_in @user
       flash[:success] = "Welcome to the assignment app!"
-      redirect_to forums_path
+      redirect_to posts_path
     else
       render 'new'
     end
@@ -31,14 +31,43 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+  def edit_pass
 
+    @user = current_user
+
+  end
+
+  def verification
+     @user = current_user
+  end
+
+  def update_veri
+       @user = current_user
+    if @user.update_attributes(user_veri_params)
+      flash[:success] = "Profile updated"
+      redirect_to setting_path
+    else
+      render 'verification'
+    end
+  end
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    if @user.update_attributes(user_info_params)
       flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to setting_path
     else
       render 'edit'
+    end
+  end
+
+  
+  def update_pass
+    @user = current_user
+    if @user.update_attributes(user_pass_params)
+      flash[:success] = "Profile updated"
+      redirect_to setting_path
+    else
+      render 'edit_pass'
     end
   end
 
@@ -52,8 +81,24 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:phone, :email, :password,
+    params.require(:user).permit(:username,:phone, :email, :city, :password,
                                  :password_confirmation)
+  end
+  def user_info_params
+
+      params.require(:user).permit(:username,:phone, :email, :city, :intro)
+
+  end
+   def user_veri_params
+
+      params.require(:user).permit(:type,:cardnum)
+
+  end
+
+  def user_pass_params
+
+      params.require(:user).permit(:password, :password_confirmation)
+
   end
 
   def logged_in_user

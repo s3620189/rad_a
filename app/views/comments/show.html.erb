@@ -1,0 +1,55 @@
+
+<% provide(:title, 'post and comments') %>
+<% provide(:button_text, 'Post comments') %>
+
+
+<div class="row">
+  <h1><%= @post.title %></h1>
+
+  <div class= "text">
+
+  <%= @post.content %>
+
+  </div>
+    <%= render 'form' %>
+    <div >
+    ----Number of comments:
+    <%= @post.comments.count %>
+    </div>
+    <div class = "row">
+    <div>
+    <h3> --- Comments:--</h3>
+    </div>
+   
+   
+    <% @post.comments.each do |comment| %>
+    <li>
+    <% if comment!=nil %>
+    <%= gravatar_for comment.post.user %>
+    <%= comment.comments %><br>
+    <br>
+    ----Commented by user:
+    <%= comment.post.user.username %>
+    <p><%= comment.created_at %></p>
+    <br>
+    ---------------------------------------------------------------------------------
+    <br>
+    <br>
+    </li>
+    <% end %>
+    <% end %>
+    
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+

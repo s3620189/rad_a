@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
    
-    before_save :new_topic
+    default_scope { order('updated_at DESC') }
     belongs_to :user
     has_many :comments
     validates :topic, presence: true, length: { maximum: 30}
@@ -8,9 +8,5 @@ class Post < ApplicationRecord
     validates :content, presence: true, length: { maximum: 5000}
    
 
-   def new_topic
-     if self.topic == nil
-        self.topic = "New"
-     end
-   end
+
 end

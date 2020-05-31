@@ -1,0 +1,19 @@
+<% provide(:title, 'My setting') %>
+
+
+
+
+<div class="row">
+ 
+    <%= render 'sidebar' %>
+
+</div>
+
+ <nav class= "bar">
+      <ul class="nav navbar-nav ">
+        <li><%= link_to "Personal Info",   edit_user_path(current_user) %></li>
+        <li><%= link_to "Avatar " ,   "#" %></li>
+        <li><%= link_to "Password",  edit_pass_path %></li>
+        <li><%= link_to "Verification",  verification_path %></li>
+      </ul>
+    </nav>

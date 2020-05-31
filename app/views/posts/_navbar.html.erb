@@ -4,8 +4,8 @@
 
   <nav>
       <ul class="nav navbar-nav ">
-        <li><%= link_to "Recent Post",   "#" %></li>
-        <li><%= link_to "Selected Post",   "#" %></li>
+        <li><%= link_to "Recent Post",   posts_path %></li>
+        <li><%= link_to "Selected Post",   postsselected_path %></li>
         <li><%= link_to "My Setting",  "setting" %></li>
         
       </ul>
@@ -21,7 +21,7 @@
     </div>
     <% end %>
 
-     <%= link_to "New Post", new_forum_path, class: "btn btn-lg btn-primary" %>
+     <%= link_to "New Post", new_post_path, class: "btn btn-lg btn-primary" %>
 </div>
 
 

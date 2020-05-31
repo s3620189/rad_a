@@ -1,0 +1,20 @@
+<% provide(:title, 'My posts') %>
+
+<div class="row">
+ 
+    <%= render 'sidebar' %>
+
+
+    My post:
+
+       
+    <% current_user.posts.each do |post| %>
+    <li>
+   
+    <%= link_to post.title, post_comment_path(post,post.id) %><br>
+   
+    <% end %>
+
+
+
+</div>

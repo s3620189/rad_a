@@ -1,59 +1,61 @@
 class CommentsController < ApplicationController
- 
+   
 
 
-  def index
-    @users = User.all
-  end
 
   def show
-    @user = User.find(params[:id])
+    @post=Post.find(params[:post_id])
+    
+    @comments=@post.comments.all
+    @comment=@post.comments.new
+      session[:posts] ||= []
+      session[:posts] << params[:post_id] 
+      puts session[:posts].size
   end
 
+
+
   def new
-    @user = User.find(params[:id])
-    @post = @user.posts.find(params[:id])
-    @comment=@post.comments.find(params[:id])
+
+    @post = Post.find(params[:post_id])
+    @comment=@post.comments.new
+    
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
+    @post = Post.find(params[:post_id]) 
+    @comment=@post.comments.new(comment_params)
+    @comment.user_id = current_user.id if current_user
+    if @comment.save
       # successful save
-      log_in @user
-      flash[:success] = "Welcome to the assignment app!"
-      redirect_to forums_path
+      
+      flash[:success] = "comment successful!"
+      
+      render 'show'
     else
-      render 'new'
+      render 'show'
     end
   end
 
   def edit
     @user = User.find(params[:id])
+    @post = current_user.posts.find(params[:id])
+    @comment=@post.comments.find(params[:id])
   end
 
-  def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
-      redirect_to @user
-    else
-      render 'edit'
-    end
-  end
+
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
-    redirect_to users_url
+    current_user.comments.find(params[:id]).destroy
+    flash[:success] = "comment deleted"
+    redirect_to 'show'
   end
 
-
+ 
 
   private
-  def user_params
-    params.require(:user).permit(:phone, :email, :password,
-                                 :password_confirmation)
+  def comment_params
+    params.require(:comment).permit(:comments)
   end
 
   def logged_in_user
@@ -74,6 +76,7 @@ class CommentsController < ApplicationController
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
+
 
 end
 

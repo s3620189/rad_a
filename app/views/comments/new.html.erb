@@ -1,0 +1,43 @@
+
+<% provide(:title, 'new comment') %>
+
+
+
+
+<div class="row">
+  <h1><%= @post.title %></h1>
+
+  <div class= "text">
+
+  <%= @post.content %>
+
+  </div>
+    <%= link_to "New Comment", new_post_comment_path, class: "btn btn-lg btn-primary" %>
+    <div class = "row">
+    <div>
+    <h3> --- Comments:--</h3>
+    </div>
+    <% @post.comments.each do |comment| %>
+    <li>
+    <%= comment.comments %>
+    <br>
+    <%= link_to comment.user.email, comment.user %>
+    </li>
+    <% end %>
+    
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 <% provide(:title, 'Edit user') %>
 <% provide(:button_text, 'Save changes') %>
 
-<h1>Update your profile</h1>
+
 <div class = "sidebar">
 <% content_for(:sidebar) do %>
     <%= render :partial => "sidebar" %>
@@ -21,15 +21,21 @@
         <li><%= link_to "Verification",  verification_path %></li>
       </ul>
     </nav>
-    
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<div>
+   <%= form_for(@user, url:update_veri_path(@user.id) ) do |f| %>
+  <%= render 'shared/error_messages', object: @user %>
+  <%= f.label :"card type" %>
+  <%= f.text_field :cardtype, class: 'form-control' %>
+  <%= f.label :"card number" %>
+  <%= f.text_field :cardnum, class: 'form-control' %>
+  <%= f.label :"upload image no large than 2mb" %>
+  <%= f.file_field :image01, class: 'form-control' %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
+</div>
 
-    <%= render 'infor_form' %>
-
-    <div class="gravatar_edit">
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails" target="_blank">Change</a>
-    </div>
-  </div>
+<div>
+<% if @user.image01.attached? %>
+  <image src="<%= (url_for(@user.image01)) %>">
+<% end %>
 </div>

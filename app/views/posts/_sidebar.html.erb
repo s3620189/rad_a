@@ -4,16 +4,16 @@
     <li class="sidebar_profile"><%= link_to  "My Profile", current_user %>
     </li>
     <li>
-      <%= link_to  "My Posts", "#" %>
+      <%= link_to  "My Posts", myposts_path %>
     </li>
     <li>
-      <%= link_to  "My Comments", "#" %>
+      <%= link_to  "My Comments", mycomments_path %>
     </li>
     <li>
-      <%= link_to  "Comments to Me", "#" %>
+      <%= link_to  "Comments to Me", commentstome_path %>
     </li>
     <li>
-      <%= link_to  "Setting", edit_user_path(current_user) %>
+      <%= link_to  "Setting", setting_path %>
     </li>
   </ul>
 </div>
